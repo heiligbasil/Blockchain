@@ -107,20 +107,28 @@ node_identifier = str(uuid4()).replace('-', '')
 # Instantiate the Blockchain
 blockchain = Blockchain()
 
-
-@app.route('/mine', methods=['GET'])
+# curl -X POST -d '{"proof":"328347392029478565858","id":"basil"}' http://127.0.0.1:5000/mine | python -m json.tool
+@app.route('/mine', methods=['POST'])
 def mine():
-    # Run the proof of work algorithm to get the next proof
-    proof = blockchain.proof_of_work(blockchain.last_block)
-    # Forge the new Block by adding it to the chain with the proof
-    previous_hash = blockchain.hash(blockchain.last_block)
-    block = blockchain.new_block(proof, previous_hash)
-    response = {
-        'new_block': block
-    }
-    return jsonify(response), 200
+    data = request.get_json()
+    # # Run the proof of work algorithm to get the next proof
+    # proof = blockchain.proof_of_work(blockchain.last_block)
+    # # Forge the new Block by adding it to the chain with the proof
+    # previous_hash = blockchain.hash(blockchain.last_block)
+    # block = blockchain.new_block(proof, previous_hash)
+    response_code = 400
+    if data and 'proof' in data and 'id' in data:
+        response = {
+            'data': data
+        }
+        response_code = 200
+    else:
+        response = {
+            'error': 'The `proof` and/or `id` attributes were not found!'
+        }
+    return jsonify(response), response_code
 
-
+# curl -X GET http://127.0.0.1:5000/chain | python -m json.tool
 @app.route('/chain', methods=['GET'])
 def full_chain():
     response = {
@@ -129,7 +137,7 @@ def full_chain():
     }
     return jsonify(response), 200
 
-
+# curl -X GET http://127.0.0.1:5000/last_block | python -m json.tool
 @app.route('/last_block', methods=['GET'])
 def get_last_block():
     response = {
