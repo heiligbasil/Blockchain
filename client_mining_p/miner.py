@@ -59,7 +59,6 @@ if __name__ == '__main__':
             print(f'ERROR: Non-Json response returned: {r}')
             break
 
-        # TODO: Get the block from `data` and use it to look for a new proof
         print('Proofing the block...')
         new_proof = proof_of_work(data['last_block'])
 
@@ -68,11 +67,11 @@ if __name__ == '__main__':
         r = requests.post(url=node + "/mine", json=post_data)
         data = r.json()
 
-        # TODO: If the server responds with a 'message' 'New Block Forged'
-        # add 1 to the number of coins mined and print it.  Otherwise,
+        # If the server responds with a message: 'New Block Forged'
+        # add 1 to the number of coins mined and print it. Otherwise,
         # print the message from the server.
-        if data and ('message' in data == 'New Block Forged'):
+        if data['message'] == 'New Block Forged':
             mined_coins += 1
-            print(f'You have now mined {mined_coins} ¢ worth of coins!')
+            print(f'You have now mined {mined_coins}¢ worth of coins!')
         else:
-            print(data)
+            print(data['message'])
