@@ -1,0 +1,2 @@
+rootProject.name='Blockchain_Wallet'
+include ':app'
