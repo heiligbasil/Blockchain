@@ -119,7 +119,7 @@ blockchain = Blockchain()
 def receive_transaction():
     # TODO: Handle non Json request
     values = request.get_json()
-    breakpoint()
+    # breakpoint()
     required = ['sender', 'recipient', 'amount']
     if not all(k in values for k in required):
         response = {'message': 'Missing values'}
