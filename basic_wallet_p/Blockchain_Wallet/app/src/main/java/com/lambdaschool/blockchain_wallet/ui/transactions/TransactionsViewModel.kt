@@ -1,13 +1,13 @@
-package com.lambdaschool.blockchain_wallet.ui.home
+package com.lambdaschool.blockchain_wallet.ui.transactions
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class TransactionsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is notifications Fragment"
     }
     val text: LiveData<String> = _text
 }

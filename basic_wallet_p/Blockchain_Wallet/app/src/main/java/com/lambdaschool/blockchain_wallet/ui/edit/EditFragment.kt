@@ -1,4 +1,4 @@
-package com.lambdaschool.blockchain_wallet.ui.home
+package com.lambdaschool.blockchain_wallet.ui.edit
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.lambdaschool.blockchain_wallet.R
 
-class HomeFragment : Fragment() {
+class EditFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var editViewModel: EditViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        editViewModel =
+                ViewModelProviders.of(this).get(EditViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_edit, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        editViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
