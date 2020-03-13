@@ -1,6 +1,5 @@
 package com.lambdaschool.blockchain_wallet.ui
 
-import android.view.SurfaceControl.Transaction
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -51,4 +50,8 @@ class Transaction {
     @SerializedName("sender")
     @Expose
     var sender: String? = null
+}
+
+object UserId {
+    var userId: String? = null
 }
