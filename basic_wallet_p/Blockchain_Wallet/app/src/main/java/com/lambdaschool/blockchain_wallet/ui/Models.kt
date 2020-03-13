@@ -41,7 +41,7 @@ class Chain {
 class Transaction {
     @SerializedName("amount")
     @Expose
-    var amount: Int? = null
+    var amount: Float? = null
 
     @SerializedName("recipient")
     @Expose
@@ -54,4 +54,5 @@ class Transaction {
 
 object UserId {
     var userId: String? = null
+    var balance: Float? = 0f
 }
