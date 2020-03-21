@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Blockchain_Wallet</string>
+    <string name="title_edit">Edit</string>
+    <string name="title_balance">Balance</string>
+    <string name="title_transactions">Transactions</string>
+    <string name="label_edit_text">Edit</string>
+</resources>
